@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        margin-top: 100px;
+      }
+      #sim-button {
+        background-color: green;
+        color: white;
+        border: none;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+      #nao-button {
+        background-color: red;
+        color: white;
+        border: none;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        transition: all 0.2s ease-in-out;
+      }
+      #image-box {
+        display: inline-block;
+        margin: 0 auto;
+      }
+      #image {
+        width: 300px;
+        height: 200px;
+        object-fit: cover;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="image-box">
+      <img id="image" src="https://i.pinimg.com/originals/fe/19/1e/fe191e181ff10e52be000311921f648a.jpg" alt="Gatiiinho" />
+    </div>
+    <h1>Duda, você quer sair comigo?</h1>
+    <br />
+    <button id="sim-button" onclick="simButtonClicked()">Sim</button>
+    <button id="nao-button" onclick="naoButtonClicked()">Não</button>
+
+    <script>
+      let simButton = document.getElementById("sim-button");
+      let naoButton = document.getElementById("nao-button");
+      let clicks = 0;
+      let image = document.getElementById("image");
+      let images = [
+        "https://i.pinimg.com/564x/21/47/14/214714d51480f7130e15952e3bef61c7.jpg",
+        "https://i.pinimg.com/736x/15/7a/53/157a53c1a6cc436180acaa3769e23aed.jpg",
+        "https://i.pinimg.com/564x/bd/32/68/bd326851445b7fe863c6d0b026d48f61.jpg",
+      ];
+
+      function simButtonClicked() {
+        window.location.href = 'https://www.youtube.com/watch?v=O9_MxsbbTMw'
+      }
+      function simButtonGrowth() {
+        // Increase the size of the sim button
+        simButton.style.width = `${simButton.offsetWidth * 1.2}px`;
+        simButton.style.height = `${simButton.offsetHeight * 1.2}px`;
+        simButton.style.fontSize= `${simButton.offsetHeight * 0.6}px`;
+      }
+
+      function naoButtonClicked() {
+        clicks++;
+        if (clicks === 1) {
+          naoButton.innerHTML = "Pufavo, clica no sim";
+          simButtonGrowth();
+          image.src = images[0];
+        } else if (clicks === 2) {
+          naoButton.innerHTML = "tem certeza? 😢";
+          simButtonGrowth();
+          image.src = images[1];
+        } else if (clicks === 3) {
+          naoButton.innerHTML = "CLICA NO SIMMMM 🥺";
+          simButtonGrowth();
+          image.src = images[2];
+        }
+         else if (clicks > 3 && clicks<10) {
+          simButtonGrowth();
+         }
+         else if (clicks ===10) {
+          window.location.href = 'https://www.youtube.com/watch?v=zUkR6chwtOo';
+         }
+      }
+    </script>
+  </body>
+</html>
